@@ -20,3 +20,4 @@
  * String   getOllData()        获得OLL的数据
  * boolean  isRubikFinished()   判断魔方是否复原
  
+ ![image](http://github.com/M3oM3oBug/SolveRubikByCFOP/raw/master/rubik.gif)
