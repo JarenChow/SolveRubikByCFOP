@@ -21,3 +21,4 @@
  * boolean  isRubikFinished()   判断魔方是否复原
  
  ![image](https://raw.githubusercontent.com/M3oM3oBug/SolveRubikByCFOP/master/rubik.gif)
+ ![image](https://github.com/M3oM3oBug/SolveRubikByCFOP/raw/master/rubik.gif)
