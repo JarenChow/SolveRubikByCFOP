@@ -1,4 +1,4 @@
-import java.util.Arrays;
+ï»¿import java.util.Arrays;
 
 /**
  * Created by Administrator on 2015/12/9 0009.
@@ -8,10 +8,10 @@ public class RestoreRubik {
     public static void main(String[] args) {
         Rubik rubik = Rubik.getInstance();
         rubik.init();
-        String disruptedData = rubik.getDisruptedData(15); // »ñµÃ´òÂÒ²½Öè
-        System.out.println("´òÂÒ²½Öè: " + disruptedData);
-        rubik.handleTurn(disruptedData); // ´òÂÒÄ§·½
-//        Èç¹ûÓÃÕâÖÖ·½Ê½¾ÍÊÇÂ¼ÈëÄ§·½ĞÅÏ¢
+        String disruptedData = rubik.getDisruptedData(15); // è·å¾—æ‰“ä¹±æ­¥éª¤
+        System.out.println("æ‰“ä¹±æ­¥éª¤: " + disruptedData);
+        rubik.handleTurn(disruptedData); // æ‰“ä¹±é­”æ–¹
+//        å¦‚æœç”¨è¿™ç§æ–¹å¼å°±æ˜¯å½•å…¥é­”æ–¹ä¿¡æ¯
 //        rubik.getUpFace().init(Rubik.Yellow, Rubik.Yellow, Rubik.Yellow, Rubik.Yellow, Rubik.Yellow,
 //                Rubik.Yellow, Rubik.Yellow, Rubik.Yellow, Rubik.Yellow);
 //        rubik.getFrontFace().init(Rubik.Blue, Rubik.Blue, Rubik.Blue, Rubik.Blue, Rubik.Blue,
@@ -25,13 +25,13 @@ public class RestoreRubik {
 //        rubik.getDownFace().init(Rubik.White, Rubik.White, Rubik.White, Rubik.White, Rubik.White,
 //                Rubik.White, Rubik.White, Rubik.White, Rubik.White);
         rubik.cross();
-        System.out.println("CrossÊı¾İ: " + rubik.getCrossData());
+        System.out.println("Crossæ•°æ®: " + rubik.getCrossData());
         rubik.f2l();
-        System.out.println("F2LµÄËÄ¸öÊı¾İ(°´Ë³ĞòÖ´ĞĞ): " + Arrays.toString(rubik.getF2lData()));
+        System.out.println("F2Lçš„å››ä¸ªæ•°æ®(æŒ‰é¡ºåºæ‰§è¡Œ): " + Arrays.toString(rubik.getF2lData()));
         rubik.oll();
-        System.out.println("OLLÊı¾İ: " + rubik.getOllData());
+        System.out.println("OLLæ•°æ®: " + rubik.getOllData());
         rubik.pll();
-        System.out.println("PLLÊı¾İ: " + rubik.getPllData());
-        System.out.println("Ä§·½ÊÇ·ñ»¹Ô­: " + rubik.isRubikFinished());
+        System.out.println("PLLæ•°æ®: " + rubik.getPllData());
+        System.out.println("é­”æ–¹æ˜¯å¦è¿˜åŸ: " + rubik.isRubikFinished());
     }
 }

@@ -1,23 +1,23 @@
-import java.util.HashMap;
+ï»¿import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Jia en on 2015/11/14 0014.
- * Ä§·½»¹Ô­µÄËã·¨
- * Rubik    getInstance()       »ñµÃRubikµÄÎ¨Ò»ÊµÀı
- * void     init()              ³õÊ¼»¯
- * Face     getFace().init()    ³õÊ¼»¯ÃæµÄÖµ,up,front,right,back,left,down
- * String   getDisruptedData()  »ñµÃ´òÂÒ²½ÖèµÄÊı¾İ
- * void     handleTurn(String)  ´òÂÒÄ§·½
- * void     cross()             ÔËĞĞcross
- * void     f2l()               ÔËĞĞf2l
- * void     oll()               ÔËĞĞoll
- * void     pll()               ÔËĞĞpll
- * String   getCrossData()      »ñµÃCrossµÄÊı¾İ
- * String   getF2lData()        »ñµÃF2LµÄÊı¾İ
- * String   getPllData()        »ñµÃPLLµÄÊı¾İ
- * String   getOllData()        »ñµÃOLLµÄÊı¾İ
- * boolean  isRubikFinished()   ÅĞ¶ÏÄ§·½ÊÇ·ñ¸´Ô­
+ * é­”æ–¹è¿˜åŸçš„ç®—æ³•
+ * Rubik    getInstance()       è·å¾—Rubikçš„å”¯ä¸€å®ä¾‹
+ * void     init()              åˆå§‹åŒ–
+ * Face     getFace().init()    åˆå§‹åŒ–é¢çš„å€¼,up,front,right,back,left,down
+ * String   getDisruptedData()  è·å¾—æ‰“ä¹±æ­¥éª¤çš„æ•°æ®
+ * void     handleTurn(String)  æ‰“ä¹±é­”æ–¹
+ * void     cross()             è¿è¡Œcross
+ * void     f2l()               è¿è¡Œf2l
+ * void     oll()               è¿è¡Œoll
+ * void     pll()               è¿è¡Œpll
+ * String   getCrossData()      è·å¾—Crossçš„æ•°æ®
+ * String   getF2lData()        è·å¾—F2Lçš„æ•°æ®
+ * String   getPllData()        è·å¾—PLLçš„æ•°æ®
+ * String   getOllData()        è·å¾—OLLçš„æ•°æ®
+ * boolean  isRubikFinished()   åˆ¤æ–­é­”æ–¹æ˜¯å¦å¤åŸ
  */
 public class Rubik {
 
@@ -33,9 +33,9 @@ public class Rubik {
 
     public static final int White = 6; // White
 
-    public static final int None = 0; // None£¬ÎŞÑÕÉ«
+    public static final int None = 0; // Noneï¼Œæ— é¢œè‰²
 
-    // ÉÏ¡¢Ç°¡¢ÓÒ¡¢ºó¡¢×ó¡¢ÏÂ£¬Áù¸öÃæ
+    // ä¸Šã€å‰ã€å³ã€åã€å·¦ã€ä¸‹ï¼Œå…­ä¸ªé¢
     private static Face upFace;
 
     private static Face frontFace;
@@ -162,10 +162,10 @@ public class Rubik {
         f2lData = new String[]{"", "", "", ""};
     }
 
-    public String getDisruptedData(int step) { // Ëæ»ú³öÒ»¸ö´òÂÒÄ§·½µÄ·½Ê½
+    public String getDisruptedData(int step) { // éšæœºå‡ºä¸€ä¸ªæ‰“ä¹±é­”æ–¹çš„æ–¹å¼
         int lastTurn = -1;
         int currentTurn;
-        for (int i = 0; i < step; i++) { // ´òÂÒµÄ·½Ê½
+        for (int i = 0; i < step; i++) { // æ‰“ä¹±çš„æ–¹å¼
             do {
                 currentTurn = (int) (Math.random() * 6);
             } while (currentTurn == lastTurn);
@@ -176,7 +176,7 @@ public class Rubik {
         return disruptedData;
     }
 
-    public void handleTurn(String data) { // ½âÎö´«ÈëµÄ´òÂÒ·½Ê½
+    public void handleTurn(String data) { // è§£æä¼ å…¥çš„æ‰“ä¹±æ–¹å¼
         if (data.contains("F2L_")) {
             data = data.substring(data.indexOf("F2L_") + 6, data.length());
         } else if (data.contains("OLL_")) {
@@ -205,44 +205,44 @@ public class Rubik {
         }
     }
 
-    private int crossStep;  // Ñ­»·µÄµ±Ç°Éî¶È£¬0±íÊ¾µÚÒ»²ãÑ­»·£¬µ±depth++£¬½øÈëÏÂÒ»²ãÑ­»·
+    private int crossStep;  // å¾ªç¯çš„å½“å‰æ·±åº¦ï¼Œ0è¡¨ç¤ºç¬¬ä¸€å±‚å¾ªç¯ï¼Œå½“depth++ï¼Œè¿›å…¥ä¸‹ä¸€å±‚å¾ªç¯
 
-    private int crossDepth; // Ö¸¶¨Ñ­»·Éî¶È£¬0±íÊ¾Éî¶ÈÎª0£¬¼´²»½øÈëÏÂÒ»²ãÑ­»·
+    private int crossDepth; // æŒ‡å®šå¾ªç¯æ·±åº¦ï¼Œ0è¡¨ç¤ºæ·±åº¦ä¸º0ï¼Œå³ä¸è¿›å…¥ä¸‹ä¸€å±‚å¾ªç¯
 
-    private boolean isCrossFinish; // CrossÊÇ·ñÍê³ÉµÄ±êÖ¾
+    private boolean isCrossFinish; // Crossæ˜¯å¦å®Œæˆçš„æ ‡å¿—
 
-    private int[] crossArray; // ÓÃÓÚÍ³¼Æ×ª¶¯·½Ê½µÄÊı×é£¬ºÍturn·½·¨½áºÏÆğÀ´ÓÃ
+    private int[] crossArray; // ç”¨äºç»Ÿè®¡è½¬åŠ¨æ–¹å¼çš„æ•°ç»„ï¼Œå’Œturnæ–¹æ³•ç»“åˆèµ·æ¥ç”¨
 
     /**
      * CROSS Handle
      */
     public void cross() {
-        while (!isCrossFinished()) { // µ±CrossÃ»½áÊø£¬¾Í¿ªÊ¼¼ÆËãCross£¬step±íÊ¾Ñ­»·Éî¶ÈÔ½À´Ô½Éî£¬
+        while (!isCrossFinished()) { // å½“Crossæ²¡ç»“æŸï¼Œå°±å¼€å§‹è®¡ç®—Crossï¼Œstepè¡¨ç¤ºå¾ªç¯æ·±åº¦è¶Šæ¥è¶Šæ·±ï¼Œ
             judge();
             crossDepth++;
         }
     }
 
     private void judge() {
-        for (int i = 1; i <= 18; i++) { // Ò»¹²12+6ÖÖ·½Ê½×ª¶¯
-            turn(i); // Ä£Äâ×ª¶¯Ò»´Î
-            crossArray[crossStep] = i; // ½«×ª¶¯µÄÏÂ±ê´æÈëÊı×é
-            if (isCrossFinished()) { // ÅĞ¶ÏÊÇ·ñ×ª³Éµ×²ãÊ®×Ö
+        for (int i = 1; i <= 18; i++) { // ä¸€å…±12+6ç§æ–¹å¼è½¬åŠ¨
+            turn(i); // æ¨¡æ‹Ÿè½¬åŠ¨ä¸€æ¬¡
+            crossArray[crossStep] = i; // å°†è½¬åŠ¨çš„ä¸‹æ ‡å­˜å…¥æ•°ç»„
+            if (isCrossFinished()) { // åˆ¤æ–­æ˜¯å¦è½¬æˆåº•å±‚åå­—
                 isCrossFinish = true;
                 crossData = handleCrossArray(crossArray);
-            } else if (crossStep < crossDepth) { // ²»³¬¹ı8¸ö²½ÖèÄÜµÃ³öCross,crossStep´Ó0¿ªÊ¼±ä»¯µ½7£¬Éî¶ÈÓÉ1ÖÁ8
+            } else if (crossStep < crossDepth) { // ä¸è¶…è¿‡8ä¸ªæ­¥éª¤èƒ½å¾—å‡ºCross,crossStepä»0å¼€å§‹å˜åŒ–åˆ°7ï¼Œæ·±åº¦ç”±1è‡³8
                 crossStep++;
-                judge(); // µ÷ÓÃ×ÔÉí£¬½øÈëÏÂÒ»²ãÑ­»·
+                judge(); // è°ƒç”¨è‡ªèº«ï¼Œè¿›å…¥ä¸‹ä¸€å±‚å¾ªç¯
             }
             if (!isCrossFinish) {
                 if (i > 12) {
                     turn(i);
-                } else if (i < 7) { // µÃ³öÒ»´ÎÏà·´×ª¶¯£¬½«Ä£Äâ×ª¶¯¸´Ô­
+                } else if (i < 7) { // å¾—å‡ºä¸€æ¬¡ç›¸åè½¬åŠ¨ï¼Œå°†æ¨¡æ‹Ÿè½¬åŠ¨å¤åŸ
                     turn(i + 6);
                 } else {
                     turn(i - 6);
                 }
-                if (i == 18) { // µ±i==12²¢ÇÒÑ­»·CrossÎ´Íê³É£¬ÒÔÃâcrossArrayÊı¾İÔâµ½ÆÆ»µ
+                if (i == 18) { // å½“i==12å¹¶ä¸”å¾ªç¯Crossæœªå®Œæˆï¼Œä»¥å…crossArrayæ•°æ®é­åˆ°ç ´å
                     crossArray[crossStep] = 0;
                     crossStep = crossStep > 0 ? crossStep - 1 : 0;
                 }
@@ -263,7 +263,7 @@ public class Rubik {
         return temp;
     }
 
-    private void turn(int turnWay) { // ÓÃÕûĞÍÖµturnWayÀ´´ú±íµ÷ÓÃ¶ÔÓ¦µÄ·½·¨
+    private void turn(int turnWay) { // ç”¨æ•´å‹å€¼turnWayæ¥ä»£è¡¨è°ƒç”¨å¯¹åº”çš„æ–¹æ³•
         switch (turnWay) {
             case 1:
                 R();
@@ -402,7 +402,7 @@ public class Rubik {
         }
     }
 
-    private boolean isCrossFinished() { // µ±×ö³Éµ×²ãÊ®×Ö+²à±ß¶ÔÆë£¬ÔòCrossÍê³É
+    private boolean isCrossFinished() { // å½“åšæˆåº•å±‚åå­—+ä¾§è¾¹å¯¹é½ï¼Œåˆ™Crosså®Œæˆ
         return downFace.getTwoStatus() == downFace.getFiveStatus()
                 && downFace.getFourStatus() == downFace.getFiveStatus()
                 && downFace.getSixStatus() == downFace.getFiveStatus()
@@ -420,25 +420,25 @@ public class Rubik {
 
     public void f2l() {
         for (; f2lIndex < 4; f2lIndex++) {
-            if (!f2lSingleFinish()) { // Èç¹ûÇ°¡¢ÓÒ²ãÎ´Íê³ÉF2LÇÒdo41F2L·µ»Øfalse(¼´Î´ÔËĞĞ)
+            if (!f2lSingleFinish()) { // å¦‚æœå‰ã€å³å±‚æœªå®ŒæˆF2Lä¸”do41F2Lè¿”å›false(å³æœªè¿è¡Œ)
                 if (!do41F2L()) {
-                    judgeRubik(); // Èç¹ûÃ»ÓĞ±éÀúµ½¹«Ê½£¬Ò»¶¨ÊÇÈıÉ«¿é»òÁ½É«¿é²»ÔÚÕıÈ·µÄÎ»ÖÃ£¬ÕâÒ»²½µ÷ÕûÉ«¿é
+                    judgeRubik(); // å¦‚æœæ²¡æœ‰éå†åˆ°å…¬å¼ï¼Œä¸€å®šæ˜¯ä¸‰è‰²å—æˆ–ä¸¤è‰²å—ä¸åœ¨æ­£ç¡®çš„ä½ç½®ï¼Œè¿™ä¸€æ­¥è°ƒæ•´è‰²å—
                     handleTurn(f2lData[f2lIndex]);
                     do41F2L();
                 }
                 handleTurn(f2lData[f2lIndex]);
-            } else { // Èç¹ûµ±Ç°ÀâÒÑÍê³ÉF2LÔòÄ§·½ÕûÌåÓÒ×ª
+            } else { // å¦‚æœå½“å‰æ£±å·²å®ŒæˆF2Låˆ™é­”æ–¹æ•´ä½“å³è½¬
                 handleTurn(f2lData[f2lIndex] = "y'");
             }
         }
     }
 
-    // ·ÖÎöÈı½Ç¿éµÄÎ»ÖÃ£¬È»ºó·ÖÎöÁ½½Ç¿éµÄÎ»ÖÃ£¬½ø¶øÄÜ¹»´¥·¢¹«Ê½
-    // ÕâÀïĞ´µÄºÜ¸´ÔÓÊÇÒòÎª¹Ë¼°µ½ÓÃ¾¡Á¿ÉÙµÄ²½Êı´¥·¢¹«Ê½£¬Èç¹ûÒªĞ´¼òµ¥£¬ÔòÏÈ×ª³öÀ´Ò»¸ö½ÇÉ«¿é£¬ÔÙÕÒÀâÉ«¿é³öÀ´(¼´Á½¸ö²½Öè)
+    // åˆ†æä¸‰è§’å—çš„ä½ç½®ï¼Œç„¶ååˆ†æä¸¤è§’å—çš„ä½ç½®ï¼Œè¿›è€Œèƒ½å¤Ÿè§¦å‘å…¬å¼
+    // è¿™é‡Œå†™çš„å¾ˆå¤æ‚æ˜¯å› ä¸ºé¡¾åŠåˆ°ç”¨å°½é‡å°‘çš„æ­¥æ•°è§¦å‘å…¬å¼ï¼Œå¦‚æœè¦å†™ç®€å•ï¼Œåˆ™å…ˆè½¬å‡ºæ¥ä¸€ä¸ªè§’è‰²å—ï¼Œå†æ‰¾æ£±è‰²å—å‡ºæ¥(å³ä¸¤ä¸ªæ­¥éª¤)
     private void judgeRubik() {
-        // Èç¹ûÈı½ÇÔÚÇ°ÓÒÏÂ½Ç£¬ÕâÊÇÌØÊâÇé¿ö£¬°üº¬¹«Ê½f2l_01-f2l_11
+        // å¦‚æœä¸‰è§’åœ¨å‰å³ä¸‹è§’ï¼Œè¿™æ˜¯ç‰¹æ®Šæƒ…å†µï¼ŒåŒ…å«å…¬å¼f2l_01-f2l_11
         if (is3There(frontFace.getNineStatus(), rightFace.getSevenStatus(), downFace.getThreeStatus())) {
-            if (frontFourFront()) { // Èç¹ûÇ°²ã4ºÅÎ»ÎªÇ°²ãµÄÑÕÉ«£¬×ó²ã6ºÅÎ»ÎªÓÒ²ãÑÕÉ«
+            if (frontFourFront()) { // å¦‚æœå‰å±‚4å·ä½ä¸ºå‰å±‚çš„é¢œè‰²ï¼Œå·¦å±‚6å·ä½ä¸ºå³å±‚é¢œè‰²
                 f2lData[f2lIndex] += "L'U2L ";
             } else if (frontFourRight()) {
                 f2lData[f2lIndex] += "L'U'L ";
@@ -457,7 +457,7 @@ public class Rubik {
             } else if (upFourRight() || upEightFront()) {
                 f2lData[f2lIndex] += "U'";
             }
-        } else if (is3There(frontFace.getSevenStatus(), leftFace.getNineStatus(), downFace.getOneStatus())) { // Èç¹ûÈı½ÇÔÚÇ°×óÏÂ½Ç
+        } else if (is3There(frontFace.getSevenStatus(), leftFace.getNineStatus(), downFace.getOneStatus())) { // å¦‚æœä¸‰è§’åœ¨å‰å·¦ä¸‹è§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L'U'L ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -469,7 +469,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "L'U'L ";
             }
-        } else if (is3There(leftFace.getSevenStatus(), backFace.getOneStatus(), downFace.getSevenStatus())) { // Èç¹ûÈı½ÇÔÚºó×óÏÂ½Ç
+        } else if (is3There(leftFace.getSevenStatus(), backFace.getOneStatus(), downFace.getSevenStatus())) { // å¦‚æœä¸‰è§’åœ¨åå·¦ä¸‹è§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L U L2U L ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -481,7 +481,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "L U2L'";
             }
-        } else if (is3There(rightFace.getNineStatus(), backFace.getThreeStatus(), downFace.getNineStatus())) { // Èç¹ûÈı½ÇÔÚºóÓÒÏÂ½Ç
+        } else if (is3There(rightFace.getNineStatus(), backFace.getThreeStatus(), downFace.getNineStatus())) { // å¦‚æœä¸‰è§’åœ¨åå³ä¸‹è§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L'U'L R'U R U ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -493,7 +493,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "R'U R U ";
             }
-        } else if (is3There(frontFace.getOneStatus(), upFace.getSevenStatus(), leftFace.getThreeStatus())) { // Èç¹ûÈı½ÇÔÚÇ°×óÉÏ½Ç
+        } else if (is3There(frontFace.getOneStatus(), upFace.getSevenStatus(), leftFace.getThreeStatus())) { // å¦‚æœä¸‰è§’åœ¨å‰å·¦ä¸Šè§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L'U2L ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -503,7 +503,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "U'";
             }
-        } else if (is3There(upFace.getOneStatus(), leftFace.getOneStatus(), backFace.getSevenStatus())) { // Èç¹ûÈı½ÇÔÚºó×óÉÏ½Ç
+        } else if (is3There(upFace.getOneStatus(), leftFace.getOneStatus(), backFace.getSevenStatus())) { // å¦‚æœä¸‰è§’åœ¨åå·¦ä¸Šè§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "U'L'U2L ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -513,7 +513,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "U2";
             }
-        } else if (is3There(rightFace.getThreeStatus(), backFace.getNineStatus(), upFace.getThreeStatus())) { // Èç¹ûÈı½ÇÔÚºóÓÒÉÏ½Ç
+        } else if (is3There(rightFace.getThreeStatus(), backFace.getNineStatus(), upFace.getThreeStatus())) { // å¦‚æœä¸‰è§’åœ¨åå³ä¸Šè§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L'U L ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -523,7 +523,7 @@ public class Rubik {
             } else {
                 f2lData[f2lIndex] += "U ";
             }
-        } else if (is3There(frontFace.getThreeStatus(), rightFace.getOneStatus(), upFace.getNineStatus())) { // Èç¹ûÈı½ÇÔÚÇ°ÓÒÉÏ½Ç
+        } else if (is3There(frontFace.getThreeStatus(), rightFace.getOneStatus(), upFace.getNineStatus())) { // å¦‚æœä¸‰è§’åœ¨å‰å³ä¸Šè§’
             if (is2There(frontFace.getFourStatus(), leftFace.getSixStatus())) {
                 f2lData[f2lIndex] += "L'U'L U ";
             } else if (is2There(leftFace.getFourStatus(), backFace.getFourStatus())) {
@@ -542,7 +542,7 @@ public class Rubik {
                 && downFace.getThreeStatus() == downFace.getFiveStatus();
     }
 
-    private boolean do41F2L() { //ÒÔÏÂÊÇ41¸öF2L¹«Ê½
+    private boolean do41F2L() { //ä»¥ä¸‹æ˜¯41ä¸ªF2Lå…¬å¼
         if (frontFace.getNineStatus() == frontFace.getFiveStatus()
                 && rightFace.getSevenStatus() == rightFace.getFiveStatus()
                 && downFace.getThreeStatus() == downFace.getFiveStatus()) {
@@ -734,8 +734,8 @@ public class Rubik {
         return false;
     }
 
-    /*ÒÔÏÂÒ»Ğ©¹«Ê½ÊÇÅĞ¶ÏÀâÉ«¿éµÄÎ»ÖÃÓëÑÕÉ«£¬·½±ãF2L¹«Ê½µÄÅĞ¶Ï*/
-    private boolean upTwoRight() { // ÉÏ²ã2ºÅÎ»µÄÀâÉ«¿éµÄÑÕÉ«ÊÇÓÒ²ãÑÕÉ«(ºó²ã8ºÅÎ»µÄÑÕÉ«ÊÇÇ°²ãÑÕÉ«)
+    /*ä»¥ä¸‹ä¸€äº›å…¬å¼æ˜¯åˆ¤æ–­æ£±è‰²å—çš„ä½ç½®ä¸é¢œè‰²ï¼Œæ–¹ä¾¿F2Lå…¬å¼çš„åˆ¤æ–­*/
+    private boolean upTwoRight() { // ä¸Šå±‚2å·ä½çš„æ£±è‰²å—çš„é¢œè‰²æ˜¯å³å±‚é¢œè‰²(åå±‚8å·ä½çš„é¢œè‰²æ˜¯å‰å±‚é¢œè‰²)
         return upFace.getTwoStatus() == rightFace.getFiveStatus()
                 && backFace.getEightStatus() == frontFace.getFiveStatus();
     }
@@ -815,7 +815,7 @@ public class Rubik {
                 && rightFace.getSixStatus() == rightFace.getFiveStatus();
     }
 
-    // ÓÃÓÚÅĞ¶ÏÄ³ÀâÉ«¿éÊÇ·ñÊÇÇ°²ãÓëÓÒ²ãµÄÀâÉ«¿é£¬Èçºì-À¶Àâ»òÀ¶-ºìÀâ£¬·µ»Øtrue¡£
+    // ç”¨äºåˆ¤æ–­æŸæ£±è‰²å—æ˜¯å¦æ˜¯å‰å±‚ä¸å³å±‚çš„æ£±è‰²å—ï¼Œå¦‚çº¢-è“æ£±æˆ–è“-çº¢æ£±ï¼Œè¿”å›trueã€‚
     private boolean is2There(int s1, int s2) {
         return isContains2(s1) && isContains2(s2);
     }
@@ -838,7 +838,7 @@ public class Rubik {
      */
     public void oll() {
         if (!isFaceFinished(upFace)) {
-            for (int i = 0; i < 4; i++) { // Ñ­»·ËÄ´Î£¬Èç¹ûÄ§·½ÕıÈ·Ôò±ØÈ»ÓĞÒ»´ÎOLLÆ¥Åäµ½¹«Ê½
+            for (int i = 0; i < 4; i++) { // å¾ªç¯å››æ¬¡ï¼Œå¦‚æœé­”æ–¹æ­£ç¡®åˆ™å¿…ç„¶æœ‰ä¸€æ¬¡OLLåŒ¹é…åˆ°å…¬å¼
                 if (!run57OLL()) {
                     y_();
                     ollData += "y'";
@@ -850,7 +850,7 @@ public class Rubik {
         }
     }
 
-    private boolean run57OLL() { // Æ¥ÅäOLL57¸ö¹«Ê½
+    private boolean run57OLL() { // åŒ¹é…OLL57ä¸ªå…¬å¼
         int b7 = backFace.getSevenStatus();
         int b8 = backFace.getEightStatus();
         int b9 = backFace.getNineStatus();
@@ -1102,7 +1102,7 @@ public class Rubik {
         return false;
     }
 
-    // ÅĞ¶ÏÊôÓÚÄÄÒ»ÖÖOLLµÄÇé¿ö£¬´«Èë²ÎÊı±íÊ¾¶ÔÓ¦ÁË¶¥²ãÑÕÉ«µÄÑÕÉ«Î»ÖÃ
+    // åˆ¤æ–­å±äºå“ªä¸€ç§OLLçš„æƒ…å†µï¼Œä¼ å…¥å‚æ•°è¡¨ç¤ºå¯¹åº”äº†é¡¶å±‚é¢œè‰²çš„é¢œè‰²ä½ç½®
     private boolean judgeOLL(int c1, int c2, int c3, int c4, int c5, int c6, int c7, int c8) {
         int u5 = upFace.getFiveStatus();
         return c1 == u5 && c2 == u5 && c3 == u5 && c4 == u5
@@ -1116,7 +1116,7 @@ public class Rubik {
         if (!isPLLFinished()) {
             for (int i = 0; i < 4; i++) {
                 if (!run21PLL()) {
-                    y_(); // Èç¹ûi==3£¬Ö´ĞĞµ½ÕâÒ»²½£¬ÄÇ¾ÍÊÇÄ§·½²»ÄÜ»¹Ô­
+                    y_(); // å¦‚æœi==3ï¼Œæ‰§è¡Œåˆ°è¿™ä¸€æ­¥ï¼Œé‚£å°±æ˜¯é­”æ–¹ä¸èƒ½è¿˜åŸ
                     pllData += "y'";
                 } else {
                     handleTurn(pllData);
@@ -1124,7 +1124,7 @@ public class Rubik {
                 }
             }
         }
-        // PLL½áÊøºó£¬ÅĞ¶ÏÑÕÉ«¶ÔÓ¦×îºóµÄU²½Öè
+        // PLLç»“æŸåï¼Œåˆ¤æ–­é¢œè‰²å¯¹åº”æœ€åçš„Uæ­¥éª¤
         if (rightFace.getOneStatus() == frontFace.getFiveStatus()) {
             U();
             pllData += "  U ";
@@ -1138,7 +1138,7 @@ public class Rubik {
         }
     }
 
-    private boolean isPLLFinished() { // Ö»ÒªÓĞÁ½²ã¶ÔºÃÁË£¬ÄÇ¾ÍÊÇPLL¶ÔºÃÁË
+    private boolean isPLLFinished() { // åªè¦æœ‰ä¸¤å±‚å¯¹å¥½äº†ï¼Œé‚£å°±æ˜¯PLLå¯¹å¥½äº†
         return leftFace.getOneStatus() == leftFace.getTwoStatus()
                 && leftFace.getOneStatus() == leftFace.getThreeStatus()
                 && frontFace.getOneStatus() == frontFace.getTwoStatus()
@@ -1280,137 +1280,137 @@ public class Rubik {
         return false;
     }
 
-    private boolean is2Equals(int c1, int c2, int c3) { // Ç°Á½¸öÑÕÉ«ÏàµÈÇÒÓëµÚÈı¸ö²»ÏàµÈ
+    private boolean is2Equals(int c1, int c2, int c3) { // å‰ä¸¤ä¸ªé¢œè‰²ç›¸ç­‰ä¸”ä¸ç¬¬ä¸‰ä¸ªä¸ç›¸ç­‰
         return c1 == c2 && c1 != c3;
     }
 
-    private boolean is3Equals(int c1, int c2, int c3) { // Èı¸öÑÕÉ«¶¼ÏàµÈ
+    private boolean is3Equals(int c1, int c2, int c3) { // ä¸‰ä¸ªé¢œè‰²éƒ½ç›¸ç­‰
         return c1 == c2 && c2 == c3;
     }
 
-    private boolean is3NotEquals(int c1, int c2, int c3) { // Èı¸öÑÕÉ«¶¼²»ÏàµÈ
+    private boolean is3NotEquals(int c1, int c2, int c3) { // ä¸‰ä¸ªé¢œè‰²éƒ½ä¸ç›¸ç­‰
         return c1 != c2 && c2 != c3 && c1 != c3;
     }
 
     /**
-     * ÒÔÏÂ²¿·ÖÎª×ª»»Ä§·½µÄµ¥¸öÖ¸Áî
+     * ä»¥ä¸‹éƒ¨åˆ†ä¸ºè½¬æ¢é­”æ–¹çš„å•ä¸ªæŒ‡ä»¤
      */
 
-    // ÓÒ±ßÁ½²ãÓÒ×ª ÓÒ2ÓÒ r 
+    // å³è¾¹ä¸¤å±‚å³è½¬ å³2å³ r 
     private void r() {
         R();
         M_();
     }
 
-    // ÓÒ±ßÁ½²ã×ó×ª ÓÒ2×ó r'
+    // å³è¾¹ä¸¤å±‚å·¦è½¬ å³2å·¦ r'
     private void r_() {
         R_();
         M();
     }
 
-    // ×ó±ßÁ½²ãÓÒ×ª ×ó2ÓÒ l
+    // å·¦è¾¹ä¸¤å±‚å³è½¬ å·¦2å³ l
     private void l() {
         L();
         M();
     }
 
-    // ×ó±ßÁ½²ã×ó×ª ×ó2×ó l'
+    // å·¦è¾¹ä¸¤å±‚å·¦è½¬ å·¦2å·¦ l'
     private void l_() {
         L_();
         M_();
     }
 
-    // ÉÏÃæÁ½²ã×ó×ª ÉÏ2×ó u
+    // ä¸Šé¢ä¸¤å±‚å·¦è½¬ ä¸Š2å·¦ u
     private void u() {
         U();
         E_();
     }
 
-    // ÉÏÃæÁ½²ãÓÒ×ª ÉÏ2ÓÒ u'
+    // ä¸Šé¢ä¸¤å±‚å³è½¬ ä¸Š2å³ u'
     private void u_() {
         U_();
         E();
     }
 
-    // ÏÂÃæÁ½²ãÓÒ×ª ÏÂ2ÓÒ d 
+    // ä¸‹é¢ä¸¤å±‚å³è½¬ ä¸‹2å³ d 
     private void d() {
         E();
         D();
     }
 
-    // ÏÂÃæÁ½²ã×ó×ª ÏÂ2×ó d'
+    // ä¸‹é¢ä¸¤å±‚å·¦è½¬ ä¸‹2å·¦ d'
     private void d_() {
         E_();
         D_();
     }
 
-    // Ç°ÃæÁ½²ãÓÒ×ª Ç°2ÓÒ f 
+    // å‰é¢ä¸¤å±‚å³è½¬ å‰2å³ f 
     private void f() {
         F();
         S();
     }
 
-    // Ç°ÃæÁ½²ã×ó×ª Ç°2×ó f'
+    // å‰é¢ä¸¤å±‚å·¦è½¬ å‰2å·¦ f'
     private void f_() {
         F_();
         S_();
     }
 
-    // ºóÃæÁ½²ã×ó×ª ºó2×ó b 
+    // åé¢ä¸¤å±‚å·¦è½¬ å2å·¦ b 
     private void b() {
         B();
         S_();
     }
 
-    // ºóÃæÁ½²ãÓÒ×ª ºó2ÓÒ b'
+    // åé¢ä¸¤å±‚å³è½¬ å2å³ b'
     private void b_() {
         B_();
         S();
     }
 
-    // ÈÆxÖáÏòÉÏ(×óµ½ÓÒÎªxÖá) Ç°²ãÕûÌåÉÏ×ª x 
+    // ç»•xè½´å‘ä¸Š(å·¦åˆ°å³ä¸ºxè½´) å‰å±‚æ•´ä½“ä¸Šè½¬ x 
     private void x() {
         L_();
         R();
         M_();
     }
 
-    // ÈÆxÖáÏòÏÂ Ç°²ãÕûÌåÏÂ×ª x'
+    // ç»•xè½´å‘ä¸‹ å‰å±‚æ•´ä½“ä¸‹è½¬ x'
     private void x_() {
         L();
         R_();
         M();
     }
 
-    // ÈÆyÖáÏò×ó(ÉÏµ½ÏÂÎªyÖá) Ç°²ãÕûÌå×ó×ª y
+    // ç»•yè½´å‘å·¦(ä¸Šåˆ°ä¸‹ä¸ºyè½´) å‰å±‚æ•´ä½“å·¦è½¬ y
     private void y() {
         U();
         D_();
         E_();
     }
 
-    // ÈÆyÖáÏòÓÒ Ç°²ãÕûÌåÓÒ×ª y'
+    // ç»•yè½´å‘å³ å‰å±‚æ•´ä½“å³è½¬ y'
     private void y_() {
         U_();
         D();
         E();
     }
 
-    // ÈÆzÖáÏò×ó(Ç°µ½ºóÎªzÖá) ÉÏ²ãÕûÌå×ó×ª z'
+    // ç»•zè½´å‘å·¦(å‰åˆ°åä¸ºzè½´) ä¸Šå±‚æ•´ä½“å·¦è½¬ z'
     private void z_() {
         B();
         F_();
         S_();
     }
 
-    // ÈÆzÖáÏòÓÒ(Ç°µ½ºóÎªzÖá) ÉÏ²ãÕûÌåÓÒ×ª z
+    // ç»•zè½´å‘å³(å‰åˆ°åä¸ºzè½´) ä¸Šå±‚æ•´ä½“å³è½¬ z
     private void z() {
         B_();
         F();
         S();
     }
 
-    // Ç°²ãÖĞ²ãÉÏ×ª
+    // å‰å±‚ä¸­å±‚ä¸Šè½¬
     private void M_() {
         int tempOne = frontFace.getTwoStatus();
         int tempTwo = frontFace.getFiveStatus();
@@ -1429,7 +1429,7 @@ public class Rubik {
         upFace.setEightStatus(tempThree);
     }
 
-    // Ç°²ãÖĞ²ãÏÂ×ª
+    // å‰å±‚ä¸­å±‚ä¸‹è½¬
     private void M() {
         int tempOne = frontFace.getTwoStatus();
         int tempTwo = frontFace.getFiveStatus();
@@ -1448,7 +1448,7 @@ public class Rubik {
         downFace.setEightStatus(tempThree);
     }
 
-    // Ç°²ãÖĞ²ã×ó×ª
+    // å‰å±‚ä¸­å±‚å·¦è½¬
     private void E_() {
         int tempOne = frontFace.getFourStatus();
         int tempTwo = frontFace.getFiveStatus();
@@ -1467,7 +1467,7 @@ public class Rubik {
         leftFace.setSixStatus(tempThree);
     }
 
-    // Ç°²ãÖĞ²ãÓÒ×ª
+    // å‰å±‚ä¸­å±‚å³è½¬
     private void E() {
         int tempOne = frontFace.getFourStatus();
         int tempTwo = frontFace.getFiveStatus();
@@ -1486,7 +1486,7 @@ public class Rubik {
         rightFace.setSixStatus(tempThree);
     }
 
-    // ÉÏ²ãÖĞ²ã×ó×ª
+    // ä¸Šå±‚ä¸­å±‚å·¦è½¬
     private void S_() {
         int tempOne = upFace.getFourStatus();
         int tempTwo = upFace.getFiveStatus();
@@ -1505,7 +1505,7 @@ public class Rubik {
         leftFace.setTwoStatus(tempThree);
     }
 
-    // ÉÏ²ãÖĞ²ãÓÒ×ª
+    // ä¸Šå±‚ä¸­å±‚å³è½¬
     private void S() {
         int tempOne = upFace.getFourStatus();
         int tempTwo = upFace.getFiveStatus();
@@ -1524,7 +1524,7 @@ public class Rubik {
         rightFace.setEightStatus(tempThree);
     }
 
-    // ÉÏ²ã×ó×ª
+    // ä¸Šå±‚å·¦è½¬
     private void U() {
         faceToRight(upFace);
         int tempOne = frontFace.getOneStatus();
@@ -1544,7 +1544,7 @@ public class Rubik {
         leftFace.setThreeStatus(tempThree);
     }
 
-    // ÉÏ²ãÓÒ×ª
+    // ä¸Šå±‚å³è½¬
     private void U_() {
         faceToLeft(upFace);
         int tempOne = frontFace.getOneStatus();
@@ -1564,7 +1564,7 @@ public class Rubik {
         rightFace.setThreeStatus(tempThree);
     }
 
-    // ÏÂ²ã×ó×ª
+    // ä¸‹å±‚å·¦è½¬
     private void D_() {
         faceToLeft(downFace);
         int tempOne = frontFace.getSevenStatus();
@@ -1584,7 +1584,7 @@ public class Rubik {
         leftFace.setNineStatus(tempThree);
     }
 
-    // ÏÂ²ãÓÒ×ª
+    // ä¸‹å±‚å³è½¬
     private void D() {
         faceToRight(downFace);
         int tempOne = frontFace.getSevenStatus();
@@ -1604,7 +1604,7 @@ public class Rubik {
         rightFace.setNineStatus(tempThree);
     }
 
-    // ×ó²ã×ó×ª
+    // å·¦å±‚å·¦è½¬
     private void L_() {
         faceToLeft(leftFace);
         int tempOne = upFace.getOneStatus();
@@ -1624,7 +1624,7 @@ public class Rubik {
         backFace.setSevenStatus(tempThree);
     }
 
-    // ×ó²ãÓÒ×ª
+    // å·¦å±‚å³è½¬
     private void L() {
         faceToRight(leftFace);
         int tempOne = upFace.getOneStatus();
@@ -1644,7 +1644,7 @@ public class Rubik {
         frontFace.setSevenStatus(tempThree);
     }
 
-    // ÓÒ²ã×ó×ª
+    // å³å±‚å·¦è½¬
     private void R_() {
         faceToLeft(rightFace);
         int tempOne = upFace.getNineStatus();
@@ -1664,7 +1664,7 @@ public class Rubik {
         frontFace.setThreeStatus(tempThree);
     }
 
-    // ÓÒ²ãÓÒ×ª
+    // å³å±‚å³è½¬
     private void R() {
         faceToRight(rightFace);
         int tempOne = upFace.getThreeStatus();
@@ -1684,7 +1684,7 @@ public class Rubik {
         backFace.setNineStatus(tempThree);
     }
 
-    // Ç°²ã×ó×ª
+    // å‰å±‚å·¦è½¬
     private void F_() {
         faceToLeft(frontFace);
         int tempOne = upFace.getSevenStatus();
@@ -1704,7 +1704,7 @@ public class Rubik {
         leftFace.setThreeStatus(tempThree);
     }
 
-    // Ç°²ãÓÒ×ª
+    // å‰å±‚å³è½¬
     private void F() {
         faceToRight(frontFace);
         int tempOne = upFace.getSevenStatus();
@@ -1724,7 +1724,7 @@ public class Rubik {
         rightFace.setSevenStatus(tempThree);
     }
 
-    // ºó²ã×ó×ª
+    // åå±‚å·¦è½¬
     private void B() {
         faceToRight(backFace);
         int tempOne = upFace.getOneStatus();
@@ -1744,7 +1744,7 @@ public class Rubik {
         leftFace.setOneStatus(tempThree);
     }
 
-    // ºó²ãÓÒ×ª
+    // åå±‚å³è½¬
     private void B_() {
         faceToLeft(backFace);
         int tempOne = upFace.getOneStatus();
@@ -1764,22 +1764,22 @@ public class Rubik {
         rightFace.setNineStatus(tempThree);
     }
 
-    // µ¥¶ÀÒ»¸öÃæ×ó×ª£¬±ÈÈçÇ°Ãæ£¬3ºÅÎ»µÄÖµ½øÈë1ºÅÎ»£¬6ºÅÎ»½øÈë2ºÅÎ»
-    // 9ºÅÎ»½øÈë3ºÅÎ»£¬8ºÅÎ»½øÈë6ºÅÎ»£¬ÒÔ´ËÀàÍÆ£¬·½±ãºóÃæµÄ×ª¶¯²Ù×÷¸´ÓÃÕâ¸öº¯Êı
+    // å•ç‹¬ä¸€ä¸ªé¢å·¦è½¬ï¼Œæ¯”å¦‚å‰é¢ï¼Œ3å·ä½çš„å€¼è¿›å…¥1å·ä½ï¼Œ6å·ä½è¿›å…¥2å·ä½
+    // 9å·ä½è¿›å…¥3å·ä½ï¼Œ8å·ä½è¿›å…¥6å·ä½ï¼Œä»¥æ­¤ç±»æ¨ï¼Œæ–¹ä¾¿åé¢çš„è½¬åŠ¨æ“ä½œå¤ç”¨è¿™ä¸ªå‡½æ•°
     private void faceToLeft(Face face) {
-        int tempOne = face.getOneStatus(); // ÉèÖÃÁ½¸öÖĞ×ªÖµtemp
+        int tempOne = face.getOneStatus(); // è®¾ç½®ä¸¤ä¸ªä¸­è½¬å€¼temp
         int tempTwo = face.getTwoStatus();
-        face.setOneStatus(face.getThreeStatus()); // 3½ø1
-        face.setTwoStatus(face.getSixStatus()); // 6½ø2
-        face.setThreeStatus(face.getNineStatus()); // 9½ø3
-        face.setSixStatus(face.getEightStatus()); // 8½ø6
+        face.setOneStatus(face.getThreeStatus()); // 3è¿›1
+        face.setTwoStatus(face.getSixStatus()); // 6è¿›2
+        face.setThreeStatus(face.getNineStatus()); // 9è¿›3
+        face.setSixStatus(face.getEightStatus()); // 8è¿›6
         face.setNineStatus(face.getSevenStatus());
         face.setEightStatus(face.getFourStatus());
         face.setSevenStatus(tempOne);
         face.setFourStatus(tempTwo);
     }
 
-    // µ¥¶ÀÒ»¸öÃæÓÒ×ª
+    // å•ç‹¬ä¸€ä¸ªé¢å³è½¬
     private void faceToRight(Face face) {
         int tempTwo = face.getTwoStatus();
         int tempOne = face.getOneStatus();
@@ -1793,13 +1793,13 @@ public class Rubik {
         face.setThreeStatus(tempOne);
     }
 
-    // ÅĞ¶ÏÄ§·½ÊÇ·ñÍêÈ«¸´Ô­³É¹¦
+    // åˆ¤æ–­é­”æ–¹æ˜¯å¦å®Œå…¨å¤åŸæˆåŠŸ
     public boolean isRubikFinished() {
         return isFaceFinished(upFace) && isFaceFinished(frontFace) && isFaceFinished(rightFace)
                 && isFaceFinished(backFace) && isFaceFinished(leftFace) && isFaceFinished(downFace);
     }
 
-    private boolean isFaceFinished(Face face) { // ÅĞ¶ÏÄ³¸öÃæÊÇ·ñÍê³É
+    private boolean isFaceFinished(Face face) { // åˆ¤æ–­æŸä¸ªé¢æ˜¯å¦å®Œæˆ
         return face.getOneStatus() == face.getFiveStatus() && face.getTwoStatus() == face.getFiveStatus()
                 && face.getThreeStatus() == face.getFiveStatus() && face.getFourStatus() == face.getFiveStatus()
                 && face.getSixStatus() == face.getFiveStatus() && face.getSevenStatus() == face.getFiveStatus()
